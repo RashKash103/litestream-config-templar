@@ -1,0 +1,9 @@
+dbs:
+  - path: {{ .env.DB_PATH }}
+    replica:
+      type: s3
+      bucket: {{ .BucketInfo_json.spec.bucketName }}
+      access-key-id: {{ .BucketInfo_json.spec.secretS3.accessKeyID }}
+      secret-access-key: {{ .BucketInfo_json.spec.secretS3.accessSecretKey }}
+      region: {{ .BucketInfo_json.spec.secretS3.region }}
+      endpoint: {{ .BucketInfo_json.spec.secretS3.endpoint }}

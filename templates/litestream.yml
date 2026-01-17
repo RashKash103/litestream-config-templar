@@ -1,9 +1,34 @@
+bucket: {{ .BucketInfo_json.spec.bucketName }}
+access-key-id: {{ .BucketInfo_json.spec.secretS3.accessKeyID }}
+secret-access-key: {{ .BucketInfo_json.spec.secretS3.accessSecretKey }}
+region: {{ .BucketInfo_json.spec.secretS3.region }}
+endpoint: {{ .BucketInfo_json.spec.secretS3.endpoint }}
+
 dbs:
-  - path: {{ .env.DB_PATH }}
+  - path: {{ .env.DB_PATH_0 }}
     replica:
       type: s3
-      bucket: {{ .BucketInfo_json.spec.bucketName }}
-      access-key-id: {{ .BucketInfo_json.spec.secretS3.accessKeyID }}
-      secret-access-key: {{ .BucketInfo_json.spec.secretS3.accessSecretKey }}
-      region: {{ .BucketInfo_json.spec.secretS3.region }}
-      endpoint: {{ .BucketInfo_json.spec.secretS3.endpoint }}
+
+  {{- if .env.DB_PATH_1 }}
+  - path: {{ .env.DB_PATH_1 }}
+    replica:
+      type: s3
+  {{- end -}}
+
+  {{- if .env.DB_PATH_2 }}
+  - path: {{ .env.DB_PATH_2 }}
+    replica:
+      type: s3
+  {{- end -}}
+
+  {{- if .env.DB_PATH_3 }}
+  - path: {{ .env.DB_PATH_3 }}
+    replica:
+      type: s3
+  {{- end -}}
+
+  {{- if .env.DB_PATH_4 }}
+  - path: {{ .env.DB_PATH_4 }}
+    replica:
+      type: s3
+  {{- end -}}
